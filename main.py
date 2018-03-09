@@ -3,14 +3,14 @@ import time
 
 import pyautogui
 
-Alphabet = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_.@#!$")
+Alphabet = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_.!@#$")
 
 CharLength = 1
-
-for Index in range(25):
+MAX_LENGTH = 4
+for Index in range(100000):
     passwords = (itertools.product(Alphabet, repeat = Index))
-	if len(i) > 5:
-        for i in passwords:
+    for i in passwords:
+        if(len(i)) > MAX_LENGTH-1:
             i = str(i)
             i = i.replace("[", "")
             i = i.replace("]", "")
@@ -20,4 +20,6 @@ for Index in range(25):
             i = i.replace("(", "")
             i = i.replace(")", "")
             pyautogui.typewrite(i)
+            pyautogui.keyDown("enter")
+            pyautogui.keyUp("enter")
         Index += 1
